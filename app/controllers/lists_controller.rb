@@ -26,7 +26,15 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     redirect_to @list, notice: "List Updated!" if @list.update(list_params)
   end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
     
+    redirect_to root_path
+  end
+
+
   private
   def list_params
     params.require(:list).permit(:list_name, :notes, items_attributes: [:id, :name, :quan, :notes, :_destroy])
