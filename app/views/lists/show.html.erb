@@ -8,7 +8,10 @@ This is the LIST SHOW PAGE
 
 <ol>
   <% @list.items.each do |item| %>
-    <li><%= item.name.capitalize %><%= " - #{item.quan.capitalize}" unless item.quan.blank? %><%= " - #{item.notes.capitalize}" unless item.notes.blank? %></li>
+    <li><%= item.name.capitalize %>
+      <%= " - #{item.quan.capitalize}" unless item.quan.blank? %>
+      <%= " - #{item.notes.capitalize}" unless item.notes.blank? %>
+    </li>
 <% end %>
 </ol>
 

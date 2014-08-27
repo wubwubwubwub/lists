@@ -7,6 +7,8 @@ Explore the lists..
 <% @lists.each do |list| %>
   <li>
     <%= link_to list.list_name, list %>
+    <%= button_to 'Edit List', edit_list_path(list), method: :get %>
+    <%= button_to 'Delete List', list_path(list), method: :delete %>
   </li>
 <% end %>
 

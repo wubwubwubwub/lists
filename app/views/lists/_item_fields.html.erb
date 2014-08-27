@@ -1,13 +1,7 @@
-<table>
-  <tr>
-    <td><%= f.label :name %></td>
-    <td><%= f.label :quan %></td>
-    <td><%= f.label :notes %></td>
-  </tr>
-  <tr>
-    <td><%= f.text_field :name, placeholder: 'item name' %></td>
-    <td><%= f.text_field :quan, placeholder: 'quantity' %></td>
-    <td><%= f.text_field :notes, placeholder: 'notes' %></td>
-    <td><%= f.check_box :_destroy %><%= f.label :_destroy, 'Remove Item'%></td>
-  </tr>
-</table>
+<td><%= f.text_field :name, placeholder: 'item name' %></td>
+<td><%= f.text_field :quan, placeholder: 'quantity' %></td>
+<td><%= f.text_field :notes, placeholder: 'notes' %></td>
+<td>
+  <%= f.check_box :_destroy %>
+  <%= f.label "Remove Item" %>
+</td>

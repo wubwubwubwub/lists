@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   
   def new
     @list = List.new
-    3.times { @list.items.build }
+    # 3.times { @list.items.build }
   end
   
   def create
@@ -20,6 +20,7 @@ class ListsController < ApplicationController
   
   def edit
     @list = List.find(params[:id])
+    3.times { @list.items.build }
   end
   
   def update
