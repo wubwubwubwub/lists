@@ -1,0 +1,33 @@
+<%= form_for @list do |f| %>
+  <div class="field">
+    <p><%= f.label :list_name %></p>
+    <p><%= f.text_field :list_name, placeholder: 'name me' %></p>
+    <p><%= f.label :notes %></p>
+    <p><%= f.text_area :notes, placeholder: 'notes' %></p>
+    
+    <h3><%= @list.items.count == 0 ? "Add some items:":"Edit the list:"%></h3>
+    <p>  
+      <%= f.fields_for :items do |item_fields| %>
+        <table>
+          <tr>
+            <td><%= item_fields.label :name %></td>
+            <td><%= item_fields.label :quan %></td>
+            <td><%= item_fields.label :notes %></td>
+          </tr>
+          <tr>
+            <td><%= item_fields.text_field :name, placeholder: 'item name' %></td>
+            <td><%= item_fields.text_field :quan, placeholder: 'quantity' %></td>
+            <td><%= item_fields.text_field :notes, placeholder: 'notes' %></td>
+            <td><%= item_fields.check_box :_destroy %><%= item_fields.label :_destroy, 'Remove Item'%></td>
+          </tr>
+        </table>
+      <% end %>
+    </p>
+  
+  
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

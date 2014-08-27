@@ -1,0 +1,16 @@
+<h2>This is the home page!</h2>
+
+Explore the lists..
+
+<br />
+<br />
+<% @lists.each do |list| %>
+  <li>
+    <%= link_to list.list_name, list %>
+  </li>
+<% end %>
+
+<br />
+<br />
+
+<%= link_to 'Create New List!', new_list_path %>

@@ -1,0 +1,15 @@
+This is the LIST SHOW PAGE
+<p>
+  <strong>List Name: </strong><%= @list.list_name.capitalize %>
+</p>
+<p>
+  <strong>Notes: </strong><%= @list.notes.capitalize %>
+</p>
+
+<ol>
+  <% @list.items.each do |item| %>
+    <li><%= item.name %><%= " - #{item.quan}" unless item.quan.blank? %><%= " - #{item.notes}" unless item.notes.blank? %></li>
+<% end %>
+</ol>
+
+<h4><%= link_to 'Edit this list', edit_list_path %>
