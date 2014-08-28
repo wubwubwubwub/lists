@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2><%= "#{@sender.capitalize} wants you to pick up the following:"%></h2>
+
+    <h3><%= "List: #{@list.list_name.capitalize}" %></h3>
+
+    <ol>
+      <% @list.items.each do |item| %>
+      <li>
+        <%= "#{item.name.capitalize}" %>
+        <%= " - #{item.quan.capitalize}" if item.quan != "" %>
+        <%= " - #{item.notes}" if item.notes != "" %>
+      </li>
+      <% end %>
+    </ol>
+  
+  </body>
+</html>

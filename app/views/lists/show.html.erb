@@ -29,3 +29,23 @@
     </td>
   </tr>
 </table>
+
+
+<h4>Send your list to someone!</h4>
+<%= form_tag(@list, method: "patch") do %>
+  <table>
+    <tr>
+      <td><%= label_tag :sender, "Your name:" %></td>
+      <td><%= text_field_tag :sender, nil, placeholder: 'name' %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :send_to_address, "Email to:" %></td>
+      <td><%= text_field_tag :send_to_address, nil, placeholder: 'email' %></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align:right"><%= submit_tag "Email List!" %></td>
+    </tr>
+  </table>
+<% end %>
+
+

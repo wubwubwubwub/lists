@@ -25,7 +25,16 @@ class ListsController < ApplicationController
   
   def update
     @list = List.find(params[:id])
-    redirect_to @list, notice: "List Updated!" if @list.update(list_params)
+        
+    if params[:commit] == "Email List!"
+      SendList.quick_send(@list, params[:send_to_address], params[:sender]).deliver
+      redirect_to @list, notice: "Email was sent to #{params[:send_to_address]}"
+      # elsif @list.update(list_params)
+      #   redirect_to @list, notice: "List Updated!"
+      # else
+      #   render 'form'
+    end
+      
   end
 
   def destroy
