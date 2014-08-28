@@ -29,10 +29,10 @@ class ListsController < ApplicationController
     if params[:commit] == "Email List!"
       SendList.quick_send(@list, params[:send_to_address], params[:sender]).deliver
       redirect_to @list, notice: "Email was sent to #{params[:send_to_address]}"
-      # elsif @list.update(list_params)
-      #   redirect_to @list, notice: "List Updated!"
-      # else
-      #   render 'form'
+    elsif @list.update(list_params)
+      redirect_to @list, notice: "List Updated!"
+    else
+      render 'form'
     end
       
   end
