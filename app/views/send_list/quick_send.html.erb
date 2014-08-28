@@ -4,9 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h2><%= "#{@sender.capitalize} wants you to pick up the following:"%></h2>
+    <h3><%= "#{@sender.capitalize} wants you to pick up the following:"%></h3>
 
-    <h3><%= "List: #{@list.list_name.capitalize}" %></h3>
+    <p>
+      <strong>List:  </strong><%= @list.list_name.capitalize %>
+    </p>
 
     <ol>
       <% @list.items.each do |item| %>
@@ -17,6 +19,13 @@
       </li>
       <% end %>
     </ol>
+  
+    <p>
+      <strong>Notes:</strong>
+    </p>
+    <p>
+      <%= @list.notes %>
+    </p>
   
   </body>
 </html>
