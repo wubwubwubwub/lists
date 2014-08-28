@@ -1,6 +1,12 @@
-<td><%= f.text_field :name, placeholder: 'item name' %></td>
-<td><%= f.text_field :quan, placeholder: 'quantity' %></td>
-<td><%= f.text_field :notes, placeholder: 'notes' %></td>
+<td>
+  <%= f.text_field :name, placeholder: 'item name' %>
+</td>
+<td>
+  <%= f.text_field :quan, placeholder: 'quantity' %>
+</td>
+<td>
+  <%= f.text_field :notes, size: 50, placeholder: 'notes' %>
+</td>
 <td>
   <%= f.check_box :_destroy %>
   <%= f.label "Remove Item" %>
