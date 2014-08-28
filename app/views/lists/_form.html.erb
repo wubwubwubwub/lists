@@ -1,21 +1,22 @@
 <%= form_for @list do |f| %>
   <div class="field">
-    <p><%= f.label :list_name %></p>
-    <p><%= f.text_field :list_name, placeholder: 'name me' %></p>
-    <p><%= f.label :notes %></p>
-    <p><%= f.text_area :notes, placeholder: 'notes' %></p>
+    <p><%= f.label :list_name, @list.list_name.blank? ? 'Give your list a name:':'Edit the name of your list:' %></p>
+    <p><%= f.text_field :list_name, size: 72, placeholder: 'List Name' %></p>
+    <p><%= f.label :notes, 'Special Directions?' %></p>
+    <p><%= f.text_area :notes, size: "52x4", placeholder: 'Special Directions' %></p>
     
     <h3><%= @list.items.count == 0 ? "Add some items:":"Edit the list:"%></h3>
     <table>
       <tr>
-        <th style="text-align:left"><%= f.label :name %></th>
-        <th style="text-align:left"><%= f.label :quan %></th>
+        <th style="text-align:left"><%= f.label :name, 'Item' %></th>
+        <th style="text-align:left"><%= f.label :quan, 'Quantity' %></th>
         <th style="text-align:left"><%= f.label :notes %></th>
       </tr>
       <%= f.fields_for :items do |item_fields| %>
       <tr><%= render 'item_fields', f: item_fields %></tr>
       <% end %>
   </div>
+      <tr></tr>
       <tr>
         <div class="actions">
           <td><%= f.submit %></td>
@@ -23,3 +24,4 @@
       </tr>
     </table>
 <% end %>
+

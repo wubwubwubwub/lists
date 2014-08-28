@@ -1,10 +1,4 @@
-This is the LIST SHOW PAGE
-<p>
-  <strong>List Name: </strong><%= @list.list_name.capitalize %>
-</p>
-<p>
-  <strong>Notes: </strong><%= @list.notes.capitalize %>
-</p>
+<h3><%= @list.list_name.capitalize %></h3>
 
 <ol>
   <% @list.items.each do |item| %>
@@ -14,5 +8,10 @@ This is the LIST SHOW PAGE
     </li>
 <% end %>
 </ol>
+<% unless @list.notes.blank? %>
+<p>
+  <strong>Notes: </strong><%= @list.notes.capitalize %>
+</p>
+<% end %>
 
 <h4><%= link_to 'Edit this list', edit_list_path %> | <%= link_to 'Delete', @list , method: :delete, data: { confirm: 'Are you sure you want to remove this list?'} %></h4>

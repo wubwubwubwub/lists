@@ -1,16 +1,14 @@
-<h2>This is the home page!</h2>
+<h2>Your Lists:</h2>
 
-Explore the lists..
-
-<br />
-<br />
-<% @lists.each do |list| %>
-  <li>
-    <%= link_to list.list_name, list %>
-    <%= button_to 'Edit List', edit_list_path(list), method: :get %>
-    <%= button_to 'Delete List', list_path(list), method: :delete %>
-  </li>
+<table>
+  <% @lists.each do |list| %>
+  <tr>
+    <td style="width:60%"><%= link_to list.list_name, list %></td>
+    <td style="width:20%"><%= button_to 'Edit', edit_list_path(list), method: :get %></td>
+    <td style="width:20%"><%= button_to 'Delete', list_path(list), method: :delete, data: { confirm: 'Are you sure you want to delete this list?' } %></td>
+  </tr>
 <% end %>
+</table>
 
 <br />
 <br />
