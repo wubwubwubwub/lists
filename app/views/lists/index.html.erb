@@ -1,11 +1,11 @@
-<h2>Your Lists:</h2>
+<h3>Your Lists:</h3>
 
 <table>
   <% @lists.each do |list| %>
   <tr>
     <td style="width:60%"><%= link_to list.list_name, list %></td>
-    <td style="width:20%"><%= button_to 'Edit', edit_list_path(list), method: :get %></td>
-    <td style="width:20%"><%= button_to 'Delete', list_path(list), method: :delete, data: { confirm: 'Are you sure you want to delete this list?' } %></td>
+    <td><%= button_to 'Edit', edit_list_path(list), method: :get %></td>
+    <td><%= button_to 'Delete', list_path(list), method: :delete, data: { confirm: 'Are you sure you want to delete this list?' } %></td>
   </tr>
 <% end %>
 </table>
@@ -13,4 +13,4 @@
 <br />
 <br />
 
-<%= link_to 'Create New List!', new_list_path %>
+<%= button_to 'Create New List!', new_list_path, method: :get %>

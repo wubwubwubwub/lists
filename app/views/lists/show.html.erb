@@ -6,12 +6,26 @@
       <%= " - #{item.quan.capitalize}" unless item.quan.blank? %>
       <%= " - #{item.notes.capitalize}" unless item.notes.blank? %>
     </li>
-<% end %>
+  <% end %>
 </ol>
+
+<br />
+
 <% unless @list.notes.blank? %>
-<p>
-  <strong>Notes: </strong><%= @list.notes.capitalize %>
-</p>
+  <strong>Notes: </strong><br />
+  <%= @list.notes.capitalize %>
 <% end %>
 
-<h4><%= link_to 'Edit this list', edit_list_path %> | <%= link_to 'Delete', @list , method: :delete, data: { confirm: 'Are you sure you want to remove this list?'} %></h4>
+<br />
+<br />
+
+<table>
+  <tr>
+    <td>
+      <%= button_to 'Edit this list', edit_list_path, method: :get %>
+    </td>
+    <td>
+      <%= button_to 'Delete', @list , method: :delete, data: { confirm: 'Are you sure you want to remove this list?'} %>
+    </td>
+  </tr>
+</table>

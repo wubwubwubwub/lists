@@ -1,5 +1,7 @@
 <%= form_for @list do |f| %>
-  <h3><%= @list.list_name.blank? ? "Create a new list":"Edit your list:"%></h3>
+  <h3>
+    <%= @list.list_name.blank? ? "Create a new list:":"Edit your list:"%>
+  </h3>
   <table>
     <tr>
       <th style="text-align:left">
