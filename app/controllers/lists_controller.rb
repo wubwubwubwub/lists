@@ -17,7 +17,7 @@ class ListsController < ApplicationController
     @list = List.create(list_params)
         
     if @list.save
-      redirect_to lists_path, notice: "Nice job!"
+      redirect_to lists_path, notice: "#{@list.list_name.capitalize} was created!"
     else
       8.times{ @list.items.build }
       flash.now.alert = "Your list must have a name"
