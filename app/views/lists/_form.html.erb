@@ -1,4 +1,5 @@
 <%= form_for @list do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <h3>
     <%= @list.list_name.blank? ? "Create a new list:":"Edit your list:"%>
   </h3>
@@ -50,6 +51,7 @@
       <% end %>
     </div>
   </table>
+
   <p>
     <div class="actions">
       <%= f.submit %>

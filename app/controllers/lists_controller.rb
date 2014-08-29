@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   
   def index
-    @lists = List.all
+    @lists = current_user.lists.all      
   end
   
   def show
@@ -10,12 +10,18 @@ class ListsController < ApplicationController
   
   def new
     @list = List.new
-    10.times { @list.items.build }
+    2.times { @list.items.build }
   end
   
   def create
     @list = List.create(list_params)
-    redirect_to @list
+        
+    if @list.save
+      redirect_to lists_path, notice: "Nice job!"
+    else
+      redirect_to :back, notice: "NOPE TRY AGAIN"
+    end
+    
   end
   
   def edit
@@ -41,13 +47,13 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
     
-    redirect_to root_path
+    redirect_to lists_path
   end
 
 
   private
   def list_params
-    params.require(:list).permit(:list_name, :notes, items_attributes: [:id, :name, :quan, :notes, :_destroy])
+    params.require(:list).permit(:list_name, :notes, :user_id, items_attributes: [:id, :name, :quan, :notes, :_destroy])
   end
     
 end
