@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to lists_path, notice: "Welcome #{params[:username]}!"
     else
       flash.now.alert = "Invalid email or password"
-      render 'new'
+      render 'new', layout: false
     end
   end
   
