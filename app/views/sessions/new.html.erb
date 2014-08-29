@@ -1,4 +1,11 @@
-<h1>Log in</h1>
+<div style="text-align:center">
+<br />
+<h1>Welcome to Lists</h1>
+
+<% flash.each do |name, msg| %>
+  <h4 style="color:red"><%= content_tag :div, msg, id: "flash_#{name}" %></h4>
+<% end %>
+
 
 <%= form_tag sessions_path do %>
   <p>
@@ -11,3 +18,9 @@
   </p>
   <p class="button"><%= submit_tag(value="Log In") %></p>
 <% end %>
+<br />
+<p>
+  Not signed up yet?
+<%= link_to 'Create an account', sign_up_path %>
+</p>
+</div>

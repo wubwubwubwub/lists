@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   
   def new
     @list = List.new
-    2.times { @list.items.build }
+    8.times { @list.items.build }
   end
   
   def create
@@ -19,14 +19,16 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to lists_path, notice: "Nice job!"
     else
-      redirect_to :back, notice: "NOPE TRY AGAIN"
+      8.times{ @list.items.build }
+      flash.now.alert = "Your list must have a name"
+      render :edit
     end
     
   end
   
   def edit
     @list = List.find(params[:id])
-    10.times { @list.items.build }
+    8.times { @list.items.build }
   end
   
   def update

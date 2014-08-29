@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  def new;  end
+  def new
+    render layout: false
+  end
   
   def create
     user = User.authenticate(params[:username], params[:password])
