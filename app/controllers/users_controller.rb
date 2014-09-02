@@ -7,11 +7,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, notice: "Signed up! Please log in.."
+      flash[:notice] = "You signed up successfully, please log in"
+      # flash[:color]= "valid"
+      render 'sessions/new', layout: false
     else
+      flash[:notice] = "Form is invalid"
+      # flash[:color]= "invalid"
       render 'new', layout: false
     end
-    
+
   end
   
   private

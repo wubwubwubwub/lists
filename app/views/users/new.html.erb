@@ -4,7 +4,7 @@
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
-    <div class="error_messages">
+    <div class="signup_errors">
       <ul style="list-style-type:none">
         <% for message in @user.errors.full_messages %>
           <li style="color:red"><%= message %></li>
