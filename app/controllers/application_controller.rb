@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   
-  before_filter :save_login_state, :only => [:create, :new]
+
   
   
   private
@@ -25,6 +25,14 @@ class ApplicationController < ActionController::Base
       redirect_to lists_path
     end
   end
-      
-  
+
+  def allow_permitted
+    # redirect_to lists_path unless List.find(params[:id]).user_id == current_user.id
+
+    if List.find(params[:id]).user_id != current_user.id
+      redirect_to lists_path
+      flash[:notice] = "You do not own that list"
+    end
+  end
+
 end

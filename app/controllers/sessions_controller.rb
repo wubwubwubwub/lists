@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
+    before_filter :save_login_state, :only => [:create, :new]
+
   def new
     render layout: false
   end
-  
+
   def create
     user = User.authenticate(params[:username], params[:password])
     if user
@@ -13,10 +15,10 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "Logged out!"
   end
-  
+
 end
