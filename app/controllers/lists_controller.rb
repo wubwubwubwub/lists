@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
   
+  before_action :allow_permitted, except: [:index]
+
   def index
     @lists = current_user.lists.all      
   end
