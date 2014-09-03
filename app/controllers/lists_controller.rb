@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   
-  before_filter :allow_permitted, :only => [:show]
+  before_action :allow_permitted, except: [:index]
 
   def index
     @lists = current_user.lists.all      
