@@ -1,4 +1,17 @@
 class UsersController < ApplicationController
+  
+  before_action :permitted_user, on: [:show]
+  
+  def show
+    @user = User.find(params[:id])
+    @lists = @user.lists.all
+    
+    # @user = User.find_by_username(params[:username])
+    # @lists = @user.lists.all
+    
+    render "lists/index"
+  end
+  
   def new
     @user = User.new
     render layout: false
@@ -15,7 +28,6 @@ class UsersController < ApplicationController
       # flash[:color]= "invalid"
       render 'new', layout: false
     end
-
   end
   
   private

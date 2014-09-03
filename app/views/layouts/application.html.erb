@@ -15,7 +15,7 @@
     <%= link_to "Log In", log_in_path %> or 
     <%= link_to "Sign Up", sign_up_path %>
   <% end %>  
-<%= link_to 'Your Lists', lists_path if current_user %>
+<%= link_to 'Your Lists', user_path(current_user) if current_user %>
 
 <h1 style="text-align:center">Lists</h1>
 

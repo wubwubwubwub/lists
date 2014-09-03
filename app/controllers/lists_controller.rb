@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
   
-  before_action :allow_permitted, except: [:index]
+  before_action :permitted_list, on: [:show]
 
   def index
-    @lists = current_user.lists.all      
+    #@garbage = current_user.lists.all      
   end
   
   def show
@@ -12,16 +12,16 @@ class ListsController < ApplicationController
   
   def new
     @list = List.new
-    8.times { @list.items.build }
+    1.times { @list.items.build }
   end
   
   def create
     @list = List.create(list_params)
         
     if @list.save
-      redirect_to lists_path, notice: "#{@list.list_name.capitalize} was created!"
+      redirect_to user_path(current_user), notice: "#{@list.list_name.capitalize} was created!"
     else
-      8.times{ @list.items.build }
+      1.times{ @list.items.build }
       flash.now.alert = "Your list must have a name"
       render :edit
     end
@@ -30,7 +30,7 @@ class ListsController < ApplicationController
   
   def edit
     @list = List.find(params[:id])
-    8.times { @list.items.build }
+    1.times { @list.items.build }
   end
   
   def update
@@ -51,7 +51,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
     
-    redirect_to lists_path
+    redirect_to user_path(current_user)
   end
 
 
