@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     @list = List.create(list_params)
         
     if @list.save
-      redirect_to user_path(current_user), notice: "#{@list.list_name.capitalize} was created!"
+      redirect_to "/#{@list.user.username}", notice: "#{@list.list_name.capitalize} was created!"
     else
       1.times{ @list.items.build }
       flash.now.alert = "Your list must have a name"
@@ -51,7 +51,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
     
-    redirect_to user_path(current_user)
+    redirect_to "/#{@list.user.username}"
   end
 
 

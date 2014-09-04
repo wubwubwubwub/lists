@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     
-  # before_action :save_login_state, :only => [:create, :new]
+  before_action :save_login_state, :only => [:create, :new]
 
   def new
     render layout: false

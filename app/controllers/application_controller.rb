@@ -14,11 +14,14 @@ class ApplicationController < ActionController::Base
       redirect_to log_in_path
     end
   end
-  # def save_login_state
-  #  if session[:user_id]
-  #    redirect_to user_path(current_user)
-  #  end
-  # end
+  
+  def save_login_state
+   if session[:user_id]
+     redirect_to "/#{current_user.username}"
+     # redirect_to user_path(current_user.id) - WORKS
+   end
+  end
+  
   def permitted_list
     if List.find(params[:id]).user_id != current_user.id
       redirect_to user_path(current_user)
@@ -32,4 +35,5 @@ class ApplicationController < ActionController::Base
   #    flash[:notice] = "This is not your user"
   #  end
   # end
+  
 end

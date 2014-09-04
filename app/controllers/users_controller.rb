@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   # before_action :permitted_user, only: [:show]
   
   def show
-    # @user = User.find(params[:id])
-    # @user = params[:username] ? User.find_by_username(params[:username]) : User.find(params[:id])
+    # @user = User.find(params[:id])    
+    # @user = User.find_by_username(params[:username])
     
-    @user = User.find_by_username(params[:username])
-    
+    @user = params[:username] ? User.find_by_username(params[:username]) : User.find(params[:id])
+
     if @user && @user != current_user
       redirect_to root_path
     else
