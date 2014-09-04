@@ -14,21 +14,22 @@ class ApplicationController < ActionController::Base
       redirect_to log_in_path
     end
   end
-  def save_login_state
-    if session[:user_id]
-      redirect_to user_path(current_user)
-    end
-  end
+  # def save_login_state
+  #  if session[:user_id]
+  #    redirect_to user_path(current_user)
+  #  end
+  # end
   def permitted_list
     if List.find(params[:id]).user_id != current_user.id
       redirect_to user_path(current_user)
       flash[:notice] = "You can only access your own content"
     end
-  end  
-  def permitted_user
-    if User.find(params[:id]) != current_user
-      redirect_to user_path(current_user)
-      flash[:notice] = "This is not your user"
-    end
   end
+  
+  # def permitted_user
+  #  if User.find(params[:id]) != current_user
+  #    redirect_to user_path(current_user)
+  #    flash[:notice] = "This is not your user"
+  #  end
+  # end
 end

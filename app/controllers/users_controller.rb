@@ -1,15 +1,19 @@
 class UsersController < ApplicationController
   
-  before_action :permitted_user, on: [:show]
+  # before_action :permitted_user, only: [:show]
   
   def show
-    @user = User.find(params[:id])
-    @lists = @user.lists.all
+    # @user = User.find(params[:id])
+    # @user = params[:username] ? User.find_by_username(params[:username]) : User.find(params[:id])
     
-    # @user = User.find_by_username(params[:username])
-    # @lists = @user.lists.all
+    @user = User.find_by_username(params[:username])
     
-    render "lists/index"
+    if @user && @user != current_user
+      redirect_to root_path
+    else
+      @lists = @user.lists.all
+      render "lists/index"
+    end
   end
   
   def new

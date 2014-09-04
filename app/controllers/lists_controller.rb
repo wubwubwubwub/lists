@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   
-  before_action :permitted_list, on: [:show]
+  before_action :permitted_list, only: [:show]
 
   def index
     #@garbage = current_user.lists.all      
